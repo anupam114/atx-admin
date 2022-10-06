@@ -1,0 +1,80 @@
+// If you want to override variables do it here
+@import "variables";
+
+$enable-ltr: true;
+$enable-rtl: true;
+
+// Import CoreUI for React components library
+@import "@coreui/coreui/scss/coreui";
+
+// Import Chart.js custom tooltips styles
+@import "@coreui/chartjs/scss/coreui-chartjs";
+
+@import "layout";
+@import "example";
+
+// If you want to add custom CSS you can put it here.
+@import "custom";
+.pointer{
+    cursor: pointer;
+}
+
+.img-responsive{
+  width: 120px;
+  height: auto;
+  
+}
+
+.status-closed::before{
+    content: "\f06a";
+    font-family: "Font awesome 6 pro";
+    font-weight: 600;
+    margin-right: 0.4rem;
+    color: red;
+  
+  }
+  .status-closed{
+    color: red;
+    font-weight: 400;
+    font-size: 12px;
+    text-transform: capitalize;
+  }
+  
+  .status-open::before{
+    content: "\f058";
+    font-family: "Font awesome 6 pro";
+    font-weight: 400;
+    margin-right: 0.4rem;
+    color: rgb(88, 212, 47);
+  
+  }
+  .status-open{
+    color: rgb(88, 212, 47);
+    font-weight: 400;
+    font-size: 12px;
+    text-transform: capitalize;
+  }
+  
+  .status-caution::before{
+    content: "\f071";
+    font-family: "Font awesome 6 pro";
+    font-weight: 400;
+    margin-right: 0.4rem;
+    color: rgb(255, 219, 12);
+  
+  }
+  .status-caution{
+    color:  rgb(255, 219, 12);
+    font-weight: 400;
+    font-size: 12px;
+    text-transform: capitalize;
+  }
+  .float-right{
+    float: right;
+  }
+  .camera-feed{
+    text-align: center;
+  }
+  .mouse{
+    cursor: pointer;
+  }
