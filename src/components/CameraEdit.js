@@ -21,7 +21,7 @@ const CameraEdit = () => {
         let data = parseFormtoJson(e.target);
         data.lat = parseFloat(data.lat)
         data.lon = parseFloat(data.lon)
-
+        console.log(data)
         let url = Constants.updateCameras + location.state.id;
         let response = await fetch(url, {
             method: 'POST',
@@ -35,7 +35,6 @@ const CameraEdit = () => {
 
         if (json.status === 200) {
             toast.success("Record updated successfully!");
-            e.target.reset();
         }
 
     }

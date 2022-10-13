@@ -28,7 +28,7 @@ const CameraTable = () => {
         },
         {
             name: 'Name',
-            selector: row => row.name,
+            selector: row => <Link to={`/camera-details/${row.id}`} className='fw-bold link-dark text-decoration-none'>{row.name}</Link>,
             sortable: true,
         },
 

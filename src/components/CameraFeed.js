@@ -1,9 +1,8 @@
 import React from "react";
-import { CRow, CCol, CCard, CCardBody, CModal, CModalHeader, CModalBody, CCarousel, CCarouselItem, CImage, CCarouselCaption } from "@coreui/react";
+import { CRow, CCol, CCard, CCardBody, CCarousel, CCarouselItem, CCarouselCaption } from "@coreui/react";
 import { Link } from "react-router-dom";
 import Constants, { userToken } from "src/Constants";
 const CameraFeed = () => {
-    const [visible, setVisible] = React.useState(false);
     const [data, setData] = React.useState([]);
 
     React.useEffect(() => {
@@ -40,46 +39,45 @@ const CameraFeed = () => {
                         <CCol xs={6} key={cameras.id}>
                             <CCard>
                                 <CCardBody className="camera-feed">
-                                    <Link to="/camera-details" style={{textDecoration: 'none', color:'black'}}>
-                                        <img className="img-fluid" src={Constants.base + "uploads/" + cameras.images[0].image_name} alt={cameras.images[0].image_name} />
+                                    {
+                                        (cameras?.images?.length > 0) ?
+
+                                            <CCarousel controls>
+
+                                                {cameras.images.map((image, index) => {
+
+                                                    return (
+
+                                                        <CCarouselItem key={index}>
+                                                            <Link to={`/camera-details/${cameras.id}`} style={{ textDecoration: 'none', color: 'black' }}>
+                                                                <img className="img-fluid d-block" src={Constants.base + "uploads/" + image.image_name} alt={image.image_name} />
+                                                            </Link>
+                                                            <CCarouselCaption className="d-none d-md-block">
+                                                                <p className="fw-bold fs-5">Captured : {new Date(image.created_at).toLocaleString()}</p>
+                                                            </CCarouselCaption>
+                                                        </CCarouselItem>
+
+                                                    )
+
+                                                })}
+
+                                            </CCarousel>
+
+
+                                            : <p>No Image Available</p>
+                                    }
+                                    <Link to={`/camera-details/${cameras.id}`} style={{ textDecoration: 'none', color: 'black' }}>
+
                                         <h5>Camera Id: {cameras.unique_id}</h5>
                                         <h5>Location: {cameras.address}</h5>
-                                        <h6>Last Updated: {new Date(cameras.updated_at).toLocaleString()}</h6>
+                                        <h6>Camera Info Updated On: {new Date(cameras.updated_at).toLocaleString()}</h6>
                                     </Link>
-                                    <span onClick={() => setVisible(!visible)} className="mouse link-dark m-2"><i className="far fa-search-plus"></i></span>
                                 </CCardBody>
                             </CCard>
                         </CCol>
                     ))
                 }
             </CRow>
-
-            <CModal visible={visible} onClose={() => setVisible(false)}>
-                <CModalHeader onClose={() => setVisible(false)}>
-                </CModalHeader>
-                <CModalBody>
-                    <CCarousel controls indicators>
-                        <CCarouselItem>
-                            <CImage className="d-block w-100" src="https://photos-legacy.beholderhq.com/v3/photos/9803b71e-e740-4c1f-a01d-54b48fad8768-original.jpg" alt="slide 1" />
-                            <CCarouselCaption className="d-none d-md-block">
-                                <p>Camera: 0123456789</p>
-                            </CCarouselCaption>
-                        </CCarouselItem>
-                        <CCarouselItem>
-                            <CImage className="d-block w-100" src="https://photos-legacy.beholderhq.com/v3/photos/9803b71e-e740-4c1f-a01d-54b48fad8768-original.jpg" alt="slide 2" />
-                            <CCarouselCaption className="d-none d-md-block">
-                            <p>Camera: 0123456789</p>
-                            </CCarouselCaption>
-                        </CCarouselItem>
-                        <CCarouselItem>
-                            <CImage className="d-block w-100" src="https://photos-legacy.beholderhq.com/v3/photos/9803b71e-e740-4c1f-a01d-54b48fad8768-original.jpg" alt="slide 3" />
-                            <CCarouselCaption className="d-none d-md-block">
-                            <p>Camera: 0123456789</p>
-                            </CCarouselCaption>
-                        </CCarouselItem>
-                    </CCarousel>
-                </CModalBody>
-            </CModal>
 
         </>
     )

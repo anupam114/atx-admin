@@ -5,8 +5,11 @@ const ActionButton = (props) => {
         {
             (props.onView) ? <i className="fa-solid fa-eye pointer me-2 text-info" onClick={props.onView}></i> : ''
         }
+
+        {
+           (props.onEdit) ? <i className="fa-solid fa-eye pointer me-2 text-info" onClick={props.onEdit}></i> : '' 
+        }
             <i className="fa-solid fa-trash pointer text-danger" onClick={props.onDelete}></i>
-            <i className="fa-solid fa-pen-to-square pointer ms-2 text-warning" onClick={props.onEdit}></i>
         </>
     )
 }

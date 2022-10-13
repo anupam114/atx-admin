@@ -1,6 +1,7 @@
 import React from 'react'
-import {useNavigate } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import Constants from 'src/Constants'
+import Logo from 'src/assets/images/atx-logo-back.png'
 import {
   CButton,
   CCard,
@@ -13,7 +14,9 @@ import {
   CInputGroup,
   CInputGroupText,
   CRow,
-  CAlert
+  CAlert,
+  CImage,
+  CCallout
 } from '@coreui/react'
 import CIcon from '@coreui/icons-react'
 import { cilLockLocked, cilUser } from '@coreui/icons'
@@ -27,14 +30,14 @@ const Login = () => {
 
   React.useEffect(() => {
     const { cookie } = document;
-    if(cookie.includes('_token=')) {
+    if (cookie.includes('_token=')) {
       navigation('/dashboard')
     }
   }, [navigation])
   const handleLogin = async (e) => {
     e.preventDefault();
     let url = Constants.login;
-    let body = {username, password}
+    let body = { username, password }
     let res = await fetch(url, {
       method: 'POST',
       headers: {
@@ -46,11 +49,11 @@ const Login = () => {
 
     let data = await res.json()
     // console.log(data)
-    if(data.status !== 200){
+    if (data.status !== 200) {
       setError(data.message); return;
     }
     const d = new Date();
-    d.setTime(d.getTime() + (365*24*60*60*1000));
+    d.setTime(d.getTime() + (365 * 24 * 60 * 60 * 1000));
     document.cookie = `_token=${data._token};expires=${d.toUTCString()};path="/"`;
     navigation('/dashboard')
 
@@ -63,18 +66,21 @@ const Login = () => {
       <CContainer>
         <CRow className="justify-content-center">
           <CCol md={4}>
+            <CCallout color="info" className="bg-white">
+              New to Atx Fllods <Link to="/info">click here</Link> to Know See It Works
+            </CCallout>
             <CCardGroup>
               <CCard className="p-4">
                 <CCardBody>
-                  {(error)?<CAlert color="danger">{error}</CAlert>:<></>}
+                  {(error) ? <CAlert color="danger">{error}</CAlert> : <></>}
                   <CForm onSubmit={handleLogin}>
-                    <h2>Atx Floods, Login</h2>
-                    <p className="text-medium-emphasis">Hi! Admin, Login to start your session</p>
+                    <CImage src={Logo} className="img-fluid"></CImage>
+                    <p className="text-medium-emphasis">Login to start your session</p>
                     <CInputGroup className="mb-3">
                       <CInputGroupText>
                         <CIcon icon={cilUser} />
                       </CInputGroupText>
-                      <CFormInput placeholder="Username" autoComplete="username" value={username} onChange={(e) => setUsername(e.target.value)} required={true}/>
+                      <CFormInput placeholder="Username" autoComplete="username" value={username} onChange={(e) => setUsername(e.target.value)} required={true} />
                     </CInputGroup>
                     <CInputGroup className="mb-4">
                       <CInputGroupText>
@@ -84,7 +90,7 @@ const Login = () => {
                         type="password"
                         placeholder="Password"
                         autoComplete="current-password"
-                       value={password} onChange={(e) => setPassword(e.target.value)} required={true}/>
+                        value={password} onChange={(e) => setPassword(e.target.value)} required={true} />
                     </CInputGroup>
                     <CRow>
                       <CCol xs={6}>

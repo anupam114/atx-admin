@@ -3,7 +3,7 @@ import DataTable from "react-data-table-component";
 import Constants, { userToken } from "src/Constants";
 import ActionButton from "./ActionButton";
 import { ToastContainer, toast } from 'react-toastify';
-import { CCard, CCardBody, CFormInput, CFormSelect, CButton, CFormLabel } from "@coreui/react";
+import { CCard, CCardBody, CFormInput, CFormSelect, CButton } from "@coreui/react";
 import { Link, useNavigate } from "react-router-dom";
 import template from '../assets/template.xlsx';
 
@@ -107,8 +107,9 @@ const CrossingTable = () => {
             body:new FormData(form)
         })
         let data = await response.json();
+        form.reset();
         // console.log(data);
-        let {errors, success, warnings} = data.data;
+        let {errors, successfull, warnings} = data.data;
         errors.forEach(err => {
             toast.error(err);
         })
@@ -117,8 +118,8 @@ const CrossingTable = () => {
             toast.warning(wrr);
         })
 
-        if(success){
-            toast.success(success+ " Imported Seccessfully");
+        if(successfull){
+            toast.success(successfull+ " Imported Seccessfully");
         }
     }
     React.useEffect(() => {

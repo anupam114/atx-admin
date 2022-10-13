@@ -4,30 +4,18 @@ import Constants, { userToken } from "src/Constants";
 import { CCard, CCardBody } from "@coreui/react";
 import ActionButton from "./ActionButton";
 import { ToastContainer, toast } from 'react-toastify';
-import { useNavigate } from "react-router-dom";
 
-const ClosouresTable = () => {
-
-    const navigate = useNavigate()
-
+const ContactTable = () => {
     const [data, setData] = React.useState([]);
     const [pagination, setPagination] = React.useState({
         per_page: 10,
         page_number: 1
     })
-    const [filter, setFilter] = React.useState({
-        search: '',
-        status: ''
-    })
     const [load, setLoad] = React.useState(true)
     const [total, setTotal] = React.useState(0);
-    const handleEdit = (row) => {
-        // console.log(row);
-        navigate('/crossings/edit', { state: row });
-    }
 
     const handleDelete = async (id) => {
-        let url = Constants.deleteCrossing + id;
+        let url = Constants.deleteContacts + id;
         let response = await fetch(url, {
             method: 'GET',
             headers: {
@@ -54,34 +42,36 @@ const ClosouresTable = () => {
             sortable: true,
         },
         {
-            name: 'Jurisdiction',
-            selector: row => row.jurisdiction,
+            name: 'Email',
+            selector: row => row.email,
             sortable: true,
         },
         {
-            name: 'Address',
-            selector: row => row.address,
+            name: 'Phone',
+            selector: row => row.phone,
             sortable: true,
         },
+
         {
-            name: 'Status',
-            selector: row => <span className={`status-${row.status}`}>{row.status}</span>,
+            name: 'Message',
+            selector: row => row.message,
             sortable: true,
         },
+
         {
-            name: 'Last Modified',
-            selector: row => new Date(row.updated_at).toLocaleString(),
+            name: 'Submitted At',
+            selector: row => new Date(row.created_at).toLocaleString(),
             sortable: true,
         },
         {
             name: 'Action',
-            selector: (row) => <ActionButton onEdit={() => handleEdit(row)} onDelete={() => handleDelete(row.id)} />,
+            selector: (row) => <ActionButton onDelete={() => handleDelete(row.id)} />,
             sortable: true
         }
     ];
 
     React.useEffect(() => {
-        let url = Constants.closures;
+        let url = Constants.contacts;
 
 
         (async () => {
@@ -93,13 +83,11 @@ const ClosouresTable = () => {
                 }
             })
             let data = await response.json();
-            // console.log(data);
             setData(data.data);
             setTotal(data.total);
 
-
         })()
-    }, [pagination, load, filter])
+    }, [pagination, load])
 
 
     return (
@@ -121,7 +109,7 @@ const ClosouresTable = () => {
                 <CCardBody>
                     <div className="row">
                         <div className="col-md-6">
-                            <h5 className="d-inline text-uppercase">All Closures</h5>
+                            <h5 className="d-inline text-uppercase">All Contacts</h5>
                         </div>
                     </div>
                 </CCardBody>
@@ -139,4 +127,4 @@ const ClosouresTable = () => {
     )
 }
 
-export default ClosouresTable;
+export default ContactTable;

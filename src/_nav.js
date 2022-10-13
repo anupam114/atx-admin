@@ -25,8 +25,8 @@ const _nav = [
 
   {
     component: CNavItem,
-    name: 'Closoures',
-    to: '/closoures',
+    name: 'Closures',
+    to: '/closures',
     icon: <CIcon icon={cilXCircle} customClassName="nav-icon" />,
     badge: {
       color: 'info',
@@ -59,6 +59,35 @@ const _nav = [
         name: 'Camera Feed',
         to: 'camera-feed',
       },
+    ],
+  },
+
+  {
+    component: CNavItem,
+    name: 'Contacts',
+    to: '/contact/view',
+    icon: <CIcon icon={cilBike} customClassName="nav-icon" />,
+    badge: {
+      color: 'info',
+    },
+  },
+
+  {
+    component: CNavGroup,
+    name: 'Static Content',
+    to: '/base',
+    icon: <CIcon icon={cilCamera} customClassName="nav-icon" />,
+    items: [
+      {
+        component: CNavItem,
+        name: 'How It Works',
+        to: '/how-it-works',
+      },
+      // {
+      //   component: CNavItem,
+      //   name: 'Camera Feed',
+      //   to: 'camera-feed',
+      // },
     ],
   },
 

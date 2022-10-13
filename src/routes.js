@@ -14,6 +14,9 @@ const CameraEdit = React.lazy(() => import('./components/CameraEdit'))
 const CameraFeed = React.lazy(() => import('./components/CameraFeed'))
 const CameraDetails = React.lazy(() => import('./components/CameraDetails'))
 
+const ContactTable = React.lazy(() => import('./components/ContactTable'))
+
+const HowItWorks = React.lazy(() => import('./components/HowItWorks'))
 
 const Dashboard = React.lazy(() => import('./views/dashboard/Dashboard'))
 // const ChangePassword = React.lazy(() => import('./views/dashboard/ChangePassword'))
@@ -75,7 +78,7 @@ const routes = [
   { path: '/crossings/add', name: 'Crossings Add', element: CrossingAdd },
   { path: '/crossings/view', name: 'Crossings View', element: CrossingView },
   { path: '/crossings/edit', name: 'Crossings Edit', element: CrossingEdit },
-  { path: '/closoures', name: 'Closoures', element: ClosouresTable },
+  { path: '/closures', name: 'Closures', element: ClosouresTable },
 
 
   { path: '/cameras', name: 'Cameras', element: CameraTable },
@@ -84,8 +87,11 @@ const routes = [
 
 
   { path: '/camera-feed', name: 'Camera Feeds', element: CameraFeed },
-  { path: '/camera-details', name: 'Camera Details', element: CameraDetails },
+  { path: '/camera-details/:id', name: 'Camera Details', element: CameraDetails },
 
+  { path: '/contact/view', name: 'Contacts List', element: ContactTable },
+
+  { path: '/how-it-works', name: 'How It Works', element: HowItWorks },
 
   { path: '/theme', name: 'Theme', element: Colors, exact: true },
   { path: '/theme/colors', name: 'Colors', element: Colors },
