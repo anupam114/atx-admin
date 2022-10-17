@@ -27,6 +27,10 @@ const ClosouresTable = () => {
     }
 
     const handleDelete = async (id) => {
+        let confirmation  = window.confirm("Do you really want to delete this record?");
+        if(!confirmation) {
+            return;
+        }
         let url = Constants.deleteCrossing + id;
         let response = await fetch(url, {
             method: 'GET',

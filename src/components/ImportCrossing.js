@@ -1,13 +1,12 @@
 import React from "react";
-import DataTable from "react-data-table-component";
 import Constants, { userToken } from "src/Constants";
 import ActionButton from "./ActionButton";
 import { ToastContainer, toast } from 'react-toastify';
-import { CCard, CCardBody, CFormInput, CFormSelect, CButton } from "@coreui/react";
-import { Link, useNavigate } from "react-router-dom";
+import { CCard, CCardBody } from "@coreui/react";
+import { useNavigate } from "react-router-dom";
 import template from '../assets/template.xlsx';
 
-const CrossingTable = () => {
+const ImportCrossing = () => {
 
     const navigate = useNavigate()
     const [data, setData] = React.useState([]);
@@ -73,10 +72,6 @@ const CrossingTable = () => {
     }
 
     const handleDelete = async (id) => {
-        let confirmation  = window.confirm("Do you really want to delete this record?");
-        if(!confirmation) {
-            return;
-        }
         let url = Constants.deleteCrossing + id;
         let response = await fetch(url, {
             method: 'GET',
@@ -164,34 +159,18 @@ const CrossingTable = () => {
             <CCard className="my-2">
                 <CCardBody>
                     <div className="row">
-                        <div className="col-5">
-                            <CFormInput type="text" placeholder="Search.." className="search-text"/>
+                        <div className="col-md-6">
+                            <h5 className="d-inline text-uppercase">Crossing Data Import</h5>
                         </div>
-                        <div className="col-5">
-                            <CFormSelect className="search-status">
-                                <option hidden={true} value="">Select</option>
-                                <option value="0">Closed</option>
-                                <option value="1">Open</option>
-                                <option value="2">Caution</option>
-                            </CFormSelect>
+                        <div className="col-md-6">
+                            <div className="float-end d-inline-flex justify-content-between">
+                            <label htmlFor="file" type="submit" color="primary" className="btn btn-primary m-2">Import</label>
                         </div>
-                        <div className="col-2">
-                            <CButton type="button" className="float-end w-100" color="primary" onClick={handleSearch}>Search</CButton>
                         </div>
                     </div>
+                    <a className="text-reset" download="template.xlsx" href={template}>Download Excel Template</a>
                 </CCardBody>
-
             </CCard>
-            <DataTable
-                columns={columns}
-                data={data}
-                pagination
-                onSelectedRowsChange={handleChange}
-                paginationServer
-                paginationTotalRows={total}
-                onChangeRowsPerPage={(per_page) => setPagination({ ...pagination, per_page })}
-                onChangePage={(page_number, per_page) => setPagination({ ...pagination, page_number })}
-            />
             <form encType="multipart/from-data" className="d-none import-form">
                 <input type="file" name="file" id="file" accept=".xlsx" onChange={handleUploads}/>
             </form>
@@ -199,4 +178,4 @@ const CrossingTable = () => {
     )
 }
 
-export default CrossingTable;
+export default ImportCrossing;

@@ -73,11 +73,11 @@ const WidgetsDropdown = () => {
       <CWidgetStatsF
         className="mb-3"
         color="danger"
-        title="Total Closoures"
+        title="Total Closures"
         icon={<CIcon icon={cilXCircle} height={36} />}
         value={count.totalClosures}
         footer={
-          <Link className="font-weight-bold font-xs text-medium-emphasis" to='/closoures'>
+          <Link className="font-weight-bold font-xs text-medium-emphasis" to='/closures'>
             View more
             <CIcon icon={cilArrowRight} className="float-end" width={16} />
           </Link>

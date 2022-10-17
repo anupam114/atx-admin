@@ -64,6 +64,10 @@ const CameraTable = () => {
     }
 
     const handleDelete = async (id) => {
+        let confirmation  = window.confirm("Do you really want to delete this record?");
+        if(!confirmation) {
+            return;
+        }
         let url = Constants.deleteCameras + id;
         let response = await fetch(url, {
             method: 'GET',

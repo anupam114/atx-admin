@@ -15,6 +15,10 @@ const ContactTable = () => {
     const [total, setTotal] = React.useState(0);
 
     const handleDelete = async (id) => {
+        let confirmation  = window.confirm("Do you really want to delete this record?");
+        if(!confirmation) {
+            return;
+        }
         let url = Constants.deleteContacts + id;
         let response = await fetch(url, {
             method: 'GET',

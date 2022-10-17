@@ -6,7 +6,7 @@ const InfoPage = () => {
     const [content, setContent] = React.useState('');
 
     React.useEffect(() => {
-        let url = Constants.howItWorksContent;
+        let url = Constants.staticContent + 'info';
 
 
         (async () => {

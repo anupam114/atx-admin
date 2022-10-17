@@ -6,7 +6,7 @@ const CameraFeed = () => {
     const [data, setData] = React.useState([]);
 
     React.useEffect(() => {
-        let url = Constants.cameras;
+        let url = Constants.cameras + '?total_images=32';
         (async () => {
             let response = await fetch(url, {
                 method: 'GET',
@@ -42,7 +42,7 @@ const CameraFeed = () => {
                                     {
                                         (cameras?.images?.length > 0) ?
 
-                                            <CCarousel controls>
+                                            <CCarousel controls indicators>
 
                                                 {cameras.images.map((image, index) => {
 
@@ -52,9 +52,9 @@ const CameraFeed = () => {
                                                             <Link to={`/camera-details/${cameras.id}`} style={{ textDecoration: 'none', color: 'black' }}>
                                                                 <img className="img-fluid d-block" src={Constants.base + "uploads/" + image.image_name} alt={image.image_name} />
                                                             </Link>
-                                                            <CCarouselCaption className="d-none d-md-block">
+                                                            {/* <CCarouselCaption className="d-none d-md-block">
                                                                 <p className="fw-bold fs-5">Captured : {new Date(image.created_at).toLocaleString()}</p>
-                                                            </CCarouselCaption>
+                                                            </CCarouselCaption> */}
                                                         </CCarouselItem>
 
                                                     )

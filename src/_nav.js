@@ -24,6 +24,25 @@ const _nav = [
   },
 
   {
+    component: CNavGroup,
+    name: 'Crossings Tools & Data',
+    to: '/base',
+    icon: <CIcon icon={cilCamera} customClassName="nav-icon" />,
+    items: [
+      {
+        component: CNavItem,
+        name: 'Add Crossing Data',
+        to: '/crossings/add',
+      },
+      {
+        component: CNavItem,
+        name: 'Import Crossing Data',
+        to: '/import-crossing',
+      },
+    ],
+  },
+
+  {
     component: CNavItem,
     name: 'Closures',
     to: '/closures',
@@ -74,7 +93,7 @@ const _nav = [
 
   {
     component: CNavGroup,
-    name: 'Static Content',
+    name: 'User Guide',
     to: '/base',
     icon: <CIcon icon={cilCamera} customClassName="nav-icon" />,
     items: [
@@ -83,12 +102,19 @@ const _nav = [
         name: 'How It Works',
         to: '/how-it-works',
       },
-      // {
-      //   component: CNavItem,
-      //   name: 'Camera Feed',
-      //   to: 'camera-feed',
-      // },
-    ],
+
+      {
+        component: CNavItem,
+        name: 'Privacy Policy',
+        to: '/privacy-policy',
+      },
+
+      {
+        component: CNavItem,
+        name: 'Terms & Conditions',
+        to: '/terms-conditions',
+      },
+    ]
   },
 
 ]

@@ -19,8 +19,8 @@ const Constants = {
     updateCameras : prefix + 'admin/cameras/update/',
     contacts: prefix + 'admin/contacts/all',
     deleteContacts : prefix + 'admin/contacts/delete/',
-    howItWorksUpdate: prefix + 'admin/static/update/info',
-    howItWorksContent: prefix + 'admin/static/info'
+    staticContentUpdate: prefix + 'admin/static/update/',
+    staticContent: prefix + 'admin/static/'
 }
 export const userToken = () => {
     let { cookie } = document;

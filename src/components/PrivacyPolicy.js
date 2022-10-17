@@ -6,7 +6,7 @@ import { toast, ToastContainer } from 'react-toastify';
 
 import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
-const HowItWorks = () => {
+const PrivacyPolicy = () => {
     const [content, setContent] = React.useState('')
     const modules =  {
         toolbar: [
@@ -26,7 +26,7 @@ const HowItWorks = () => {
       ]
     const handleSubmit = async (e) => {
         e.preventDefault();
-        let url = Constants.staticContentUpdate + 'info';
+        let url = Constants.staticContentUpdate + 'privacy';
         let body = JSON.stringify({content})
         // console.log(body)
         let response = await fetch(url, {
@@ -50,7 +50,7 @@ const HowItWorks = () => {
     }
 
     React.useEffect(() => {
-        let url = Constants.staticContent + 'info';
+        let url = Constants.staticContent + 'privacy';
 
 
         (async () => {
@@ -106,4 +106,4 @@ const HowItWorks = () => {
         </>
     );
 }
-export default HowItWorks;
+export default PrivacyPolicy;

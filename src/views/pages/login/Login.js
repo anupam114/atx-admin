@@ -67,7 +67,7 @@ const Login = () => {
         <CRow className="justify-content-center">
           <CCol md={4}>
             <CCallout color="info" className="bg-white">
-              New to Atx Fllods <Link to="/info">click here</Link> to Know See It Works
+              New to <b>ATX Floods</b> ? <Link to="/info" target="_blank">Click here</Link> to know more.
             </CCallout>
             <CCardGroup>
               <CCard className="p-4">

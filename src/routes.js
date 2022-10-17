@@ -6,6 +6,8 @@ const CrossingAdd = React.lazy(() => import('./components/CrossingAdd'))
 const CrossingEdit = React.lazy(() => import('./components/CrossingEdit'))
 const ClosouresTable= React.lazy(() => import('./components/ClosouresTable'))
 
+const ImportCrossing = React.lazy(() => import('./components/ImportCrossing'))
+
 const CameraTable= React.lazy(() => import('./components/CameraTable'))
 const CameraAdd = React.lazy(() => import('./components/CameraAdd'))
 const CameraEdit = React.lazy(() => import('./components/CameraEdit'))
@@ -17,6 +19,8 @@ const CameraDetails = React.lazy(() => import('./components/CameraDetails'))
 const ContactTable = React.lazy(() => import('./components/ContactTable'))
 
 const HowItWorks = React.lazy(() => import('./components/HowItWorks'))
+const PrivacyPolicy = React.lazy(() => import('./components/PrivacyPolicy'))
+const TermsConditions = React.lazy(() => import('./components/TermsConditions'))
 
 const Dashboard = React.lazy(() => import('./views/dashboard/Dashboard'))
 // const ChangePassword = React.lazy(() => import('./views/dashboard/ChangePassword'))
@@ -80,6 +84,9 @@ const routes = [
   { path: '/crossings/edit', name: 'Crossings Edit', element: CrossingEdit },
   { path: '/closures', name: 'Closures', element: ClosouresTable },
 
+  { path: '/import-crossing', name: 'Import Crossing', element: ImportCrossing },
+
+
 
   { path: '/cameras', name: 'Cameras', element: CameraTable },
   { path: '/cameras/add', name: 'Cameras Add', element: CameraAdd },
@@ -92,6 +99,8 @@ const routes = [
   { path: '/contact/view', name: 'Contacts List', element: ContactTable },
 
   { path: '/how-it-works', name: 'How It Works', element: HowItWorks },
+  { path: '/privacy-policy', name: 'Privacy Policy', element: PrivacyPolicy },
+  { path: '/terms-conditions', name: 'Terms & Conditions', element: TermsConditions },
 
   { path: '/theme', name: 'Theme', element: Colors, exact: true },
   { path: '/theme/colors', name: 'Colors', element: Colors },
